@@ -13,6 +13,8 @@
 using namespace std;
 using namespace Gtk;
 
+//CVSSSSSSSSSSSSSSS
+
 int main(int argc, char *argv[]){
 	Main kit(argc,argv);
 	MyWindow MainWindow;
