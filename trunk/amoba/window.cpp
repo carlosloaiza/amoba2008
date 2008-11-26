@@ -86,7 +86,8 @@ void MyWindow::game(){
 	for(int i=0;i<15;i++){
 		for(int j=0;j<15;j++){
 			MyToggleButtons *MyTB=new MyToggleButtons;
-			MyTB->signal_toggled().connect(sigc::mem_fun(*this,&MyWindow::circle_or_cross));
+//			MyTB->signal_toggled().connect(sigc::mem_fun(*this,&MyWindow::circle_or_cross));
+			MyTB->signal_toggled().connect(sigc::mem_fun(MyTB,&MyToggleButtons::my_click));
 			MyTB->setParent(this);
 			data[i][j]=2;
 			MyGameTable.attach(*MyTB,i,i+1,j,j+1);
@@ -99,19 +100,6 @@ void MyWindow::game(){
 	show_all_children();
 }
 
-void MyWindow::circle_or_cross(){
-	if(get_c()==0){
-		status_label.set_text(p2);
-	}
-	if(get_c()==1){
-		status_label.set_text(p1);
-	}
-	//data[][]=get_c();
-	MyToggleButtons *ch;
-	ch->my_click();
-	set_c(abs((get_c()%2)-1));
-}
-
 void MyWindow::set_color(int r,int g,int b){
 	col.set_red(r);
 	col.set_green(g);
@@ -122,7 +110,16 @@ Gdk::Color MyWindow::get_color(){
 	return col;
 }
 
-int MyWindow::get_c(){
+int MyWindow::getState(MyToggleButtons* button){
+	c=c%2==0?1:0;
+	if(c==0){
+		status_label.set_text(p2);
+	}
+	if(c==1){
+		status_label.set_text(p1);
+	}
+//és itt még hívhatnám a button bármelyik függvényét, ha akarnám, mivel van mutatóm
+//	button->barmi();
 	return c;
 }
 

@@ -16,7 +16,7 @@ MyToggleButtons::MyToggleButtons(){
 }
 
 void MyToggleButtons::my_click(){
-	set_button_status(ch->get_c());
+	set_button_status(ch->getState(this));
 	set_sensitive(false);
 }
 
