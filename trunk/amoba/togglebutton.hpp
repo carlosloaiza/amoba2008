@@ -20,10 +20,10 @@ public:
 	MyToggleButtons();
 
 	void my_click();
-	void my_toggled();
 	int get_button_status();
 	void set_button_status(int _s);
 private:
+	//MyWindow *ch;
 	int s; //0-kör|| 1-iksz||2-üres
 };
 

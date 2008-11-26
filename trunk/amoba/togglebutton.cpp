@@ -12,26 +12,21 @@ using namespace Gtk;
 
 MyToggleButtons::MyToggleButtons(){
 	//this->toggled();
-	//s=2;
+	s=2;
 }
 
 void MyToggleButtons::my_click(){
-	MyWindow *ch;
-	if(get_button_status()==2){
-		set_button_status(ch->get_c());
-	}
+	MyWindow *ch;   // ahányszor kattintanék a gombokra, annyiszor létrehozza a MyWindow mutatót.Ezért lesz a c mindig 0
+	set_button_status(ch->get_c());  //nem fut le... :S
+	set_sensitive(false);
 }
 
 void MyToggleButtons::set_button_status(int _s){
 	s=_s;
-	if(s==0){this->add_pixlabel("circle.png","");std::cout<<"aaa#";}
+	if(s==0){this->add_pixlabel("pic/circle.png","");}
 	else{
-		if(s==1){this->add_pixlabel("cross.png","");}
+		if(s==1){this->add_pixlabel("pic/cross.png","");}
 	}
 }
 
 int MyToggleButtons::get_button_status(){return s;}
-
-void MyToggleButtons::my_toggled(){
-	this->toggled();
-}
