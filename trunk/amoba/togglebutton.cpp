@@ -16,7 +16,6 @@ MyToggleButtons::MyToggleButtons(){
 }
 
 void MyToggleButtons::my_click(){
-	MyWindow *ch;   // ahányszor kattintanék a gombokra, annyiszor létrehozza a MyWindow mutatót.Ezért lesz a c mindig 0
 	set_button_status(ch->get_c());  //nem fut le... :S
 	set_sensitive(false);
 }
@@ -30,3 +29,5 @@ void MyToggleButtons::set_button_status(int _s){
 }
 
 int MyToggleButtons::get_button_status(){return s;}
+
+void MyToggleButtons::setParent(MyWindow* parent) {ch = parent;}

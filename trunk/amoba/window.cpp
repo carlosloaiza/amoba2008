@@ -88,6 +88,7 @@ void MyWindow::game(){
 		for(int j=0;j<15;j++){
 			MyToggleButtons *MyTB=new MyToggleButtons;
 			MyTB->signal_toggled().connect(sigc::mem_fun(*this,&MyWindow::circle_or_cross));
+			MyTB->setParent(this);
 			MyGameTable.attach(*MyTB,i,i+1,j,j+1);
 		}
 	}
