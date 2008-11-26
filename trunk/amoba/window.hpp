@@ -17,19 +17,21 @@ using namespace std;
 class MyToggleButtons;
 class MyWindow:public Window{
 public:
-	MyWindow(int _c);
+	MyWindow();
 
 	int get_c();
 	void set_c(int _c);
 	void set_color(int r,int g,int b);
 	Gdk::Color get_color();
+	bool is_terminated();
 	void game();
 	void close();
 	void new_game();
 	void circle_or_cross();
+
 protected:
-	//static int c1;
 	int c;
+	int data[15][15];
 	Gdk::Color col;
 	string t1,t2,d1,d2,p1,p2;
 	Frame MyFrame;

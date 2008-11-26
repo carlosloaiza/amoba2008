@@ -16,18 +16,16 @@ MyToggleButtons::MyToggleButtons(){
 }
 
 void MyToggleButtons::my_click(){
-	set_button_status(ch->get_c());  //nem fut le... :S
+	set_button_status(ch->get_c());
 	set_sensitive(false);
 }
 
 void MyToggleButtons::set_button_status(int _s){
 	s=_s;
-	if(s==0){this->add_pixlabel("pic/circle.png","");}
+	if(_s==0){this->add_pixlabel("pic/circle.png","");}
 	else{
-		if(s==1){this->add_pixlabel("pic/cross.png","");}
+		if(_s==1){this->add_pixlabel("pic/cross.png","");}
 	}
 }
-
-int MyToggleButtons::get_button_status(){return s;}
 
 void MyToggleButtons::setParent(MyWindow* parent) {ch = parent;}

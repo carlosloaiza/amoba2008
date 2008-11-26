@@ -13,13 +13,13 @@ using namespace Gtk;
 using namespace std;
 
 
-MyWindow::MyWindow(int _c):
+MyWindow::MyWindow():
 	MyTable(13,10,true),
 	MyGameTable(15,15,true),
 	MyLabel(
 			"Udvozollek! Ez az Amoba!\n"
 			"A jatek celja, hogy kort es ikszet helyezz el ugy, hogy neked gyuljon ki\n"
-			"hamarabb 5 ugyanolyan egy sorban, oszlopban vagy atlosan.\n\n"
+			"hamarabb 5 egyforma egy sorban, oszlopban vagy atlosan.\n\n"
 			"Jatekosok nevei:"),
 	MyLabel1("1. jatekos:"),
 	MyLabel2("2. jatekos:"),
@@ -27,13 +27,11 @@ MyWindow::MyWindow(int _c):
 	MyButton_new("Uj jatek"),
 	MyButton_close("Bezar")
 {
-	//c1=0; set_c(c1);
-	c=_c;
-	//set_c(abs((get_c()%2)-1));
+	c=0;
 	set_title("Amoba - The Game Ver.1.0");
 	set_size_request(775,480);
 	set_border_width(30);
-	set_color(250000,0,230000);
+	set_color(255000,240000,0);
 	modify_bg(STATE_NORMAL,get_color());
 	add(MyTable);
 
@@ -64,8 +62,9 @@ MyWindow::MyWindow(int _c):
 }
 
 void MyWindow::game(){
-	MyTable.attach(MyButton_new,1,2,8,9);
-	MyTable.attach(MyButton_close,3,4,8,9);
+	MyButton_start.set_sensitive(false);
+	MyTable.attach(MyButton_new,1,2,9,10);
+	MyTable.attach(MyButton_close,3,4,9,10);
 	status_label.set_text("default");
 	t1=" kore, kor kovetkezik (O).", t2=" kore, iksz kovetkezik (X).";
 
@@ -89,6 +88,7 @@ void MyWindow::game(){
 			MyToggleButtons *MyTB=new MyToggleButtons;
 			MyTB->signal_toggled().connect(sigc::mem_fun(*this,&MyWindow::circle_or_cross));
 			MyTB->setParent(this);
+			data[i][j]=2;
 			MyGameTable.attach(*MyTB,i,i+1,j,j+1);
 		}
 	}
@@ -106,6 +106,7 @@ void MyWindow::circle_or_cross(){
 	if(get_c()==1){
 		status_label.set_text(p1);
 	}
+	//data[][]=get_c();
 	MyToggleButtons *ch;
 	ch->my_click();
 	set_c(abs((get_c()%2)-1));
@@ -135,6 +136,6 @@ void MyWindow::close(){
 
 void MyWindow::new_game(){
 	hide();
-	MyWindow NewWindow(0);
+	MyWindow NewWindow;
 	Main::run(NewWindow);
 }

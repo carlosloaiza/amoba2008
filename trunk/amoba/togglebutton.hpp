@@ -20,7 +20,6 @@ public:
 	MyToggleButtons();
 
 	void my_click();
-	int get_button_status();
 	void set_button_status(int _s);
 	void setParent(MyWindow* parent);
 private:
