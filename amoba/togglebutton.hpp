@@ -22,8 +22,9 @@ public:
 	void my_click();
 	int get_button_status();
 	void set_button_status(int _s);
+	void setParent(MyWindow* parent);
 private:
-	//MyWindow *ch;
+	MyWindow *ch;
 	int s; //0-kör|| 1-iksz||2-üres
 };
 
