@@ -24,7 +24,7 @@ public:
 	void setParent(MyWindow* parent);
 private:
 	MyWindow *ch;
-	int s; //0-kör|| 1-iksz||2-üres
+	int s; //0-üres|| 1-kor||2-X
 };
 
 #endif /* TOGGLEBUTTON_HPP_ */

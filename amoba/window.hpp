@@ -20,11 +20,10 @@ public:
 	MyWindow();
 
 	int getState(MyToggleButtons* button);
-	void set_c(int _c);
 	void set_color(int r,int g,int b);
 	Gdk::Color get_color();
 	bool is_terminated();
-	void game();
+	void startGame();
 	void close();
 	void new_game();
 

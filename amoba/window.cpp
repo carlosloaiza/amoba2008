@@ -28,7 +28,7 @@ MyWindow::MyWindow():
 	MyButton_close("Bezar")
 {
 	c=0;
-	set_title("Amoba - The Game Ver.1.0");
+	set_title("Amoba - Ver.1.0");
 	set_size_request(775,480);
 	set_border_width(30);
 	set_color(255000,240000,0);
@@ -54,14 +54,14 @@ MyWindow::MyWindow():
 	MyEntry2.set_text(d2);
 	MyEntry2.select_region(0,MyEntry2.get_text_length());
 	MyTable.attach(MyButton_start,2,3,6,7);
-	MyButton_start.signal_clicked().connect(sigc::mem_fun(*this,&MyWindow::game));
+	MyButton_start.signal_clicked().connect(sigc::mem_fun(*this,&MyWindow::startGame));
 	MyButton_close.signal_clicked().connect(sigc::mem_fun(*this,&MyWindow::close));
 	MyButton_new.signal_clicked().connect(sigc::mem_fun(*this,&MyWindow::new_game));
 
 	show_all_children();
 }
 
-void MyWindow::game(){
+void MyWindow::startGame(){
 	MyButton_start.set_sensitive(false);
 	MyTable.attach(MyButton_new,1,2,9,10);
 	MyTable.attach(MyButton_close,3,4,9,10);
@@ -83,10 +83,12 @@ void MyWindow::game(){
 	MyFrame.add(status_label);
 	MyTable.attach(MyFrame,6,9,11,13);
 
+//ciklus közepén nem hozunk létre változót, csak értéket adunk neki
+//memóriakezelésnél ez bazinagy hiba - itt persze nem, de akkor is figyelünk :D -
+	MyToggleButtons *MyTB = null;
 	for(int i=0;i<15;i++){
 		for(int j=0;j<15;j++){
-			MyToggleButtons *MyTB=new MyToggleButtons;
-//			MyTB->signal_toggled().connect(sigc::mem_fun(*this,&MyWindow::circle_or_cross));
+			MyTB=new MyToggleButtons;
 			MyTB->signal_toggled().connect(sigc::mem_fun(MyTB,&MyToggleButtons::my_click));
 			MyTB->setParent(this);
 			data[i][j]=2;
@@ -94,8 +96,6 @@ void MyWindow::game(){
 		}
 	}
 	MyTable.attach(MyGameTable,5,10,0,10);
-
-	//ide jön a logikai rész... vagy ha Gergõ azt mondja, hogy külön kell, akkor külön jön.
 
 	show_all_children();
 }
@@ -111,8 +111,8 @@ Gdk::Color MyWindow::get_color(){
 }
 
 int MyWindow::getState(MyToggleButtons* button){
-	c=c%2==0?1:0;
-	if(c==0){
+	c=c%2==0?1:2;
+	if(c==2){
 		status_label.set_text(p2);
 	}
 	if(c==1){
@@ -123,16 +123,17 @@ int MyWindow::getState(MyToggleButtons* button){
 	return c;
 }
 
-void MyWindow::set_c(int _c){
-	c=_c;
-}
-
 void MyWindow::close(){
-	hide();
+	destroy_();
+//Leáll, nem csak eltûnik...
+	Main::quit();
 }
 
 void MyWindow::new_game(){
-	hide();
+//nem mindegy, hogy elrejted az ablakot, vagy lebontod. Késõbb
+//összeakadnának a változók
+//hide();
+	destroy_();
 	MyWindow NewWindow;
 	Main::run(NewWindow);
 }
