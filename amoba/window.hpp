@@ -22,7 +22,7 @@ public:
 	int getState(MyToggleButtons* button);
 	void set_color(int r,int g,int b);
 	Gdk::Color get_color();
-	void get_cell(MyToggleButtons *button);
+	void print_cell_data(MyToggleButtons *button);
 	void startGame();
 	void close();
 	void new_game();
