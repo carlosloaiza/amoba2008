@@ -14,7 +14,6 @@ using namespace std;
 using namespace Gtk;
 
 int main(int argc, char *argv[]){
-	//static int c1=0;
 	Main kit(argc,argv);
 	MyWindow MainWindow;
 	Main::run(MainWindow);

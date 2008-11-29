@@ -12,3 +12,4 @@ A saját gomb osztályodban definiálsz vagy egy stringet, vagy két intet. Ebbe a l
 }
 
 Mindjárt lehet lekódolom, ha lesz idõm... Ha nem, akkor rád vár a feladat... :) - megcsináltam. Majd még holnap lehet írok listát, hogy mit kellene megcsinálni. De lassan készen leszel vele... A logikához beleviszek valamikor egy vázat, aztán te még tudod pontosítani a dolgokat... Nem tudom, hogy lesz-e e idõm hétvégén, de megpróbálok csinálni.
+
