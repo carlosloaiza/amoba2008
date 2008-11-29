@@ -22,21 +22,22 @@ public:
 	int getState(MyToggleButtons* button);
 	void set_color(int r,int g,int b);
 	Gdk::Color get_color();
-	bool is_terminated();
+	void get_cell(MyToggleButtons *button);
 	void startGame();
 	void close();
 	void new_game();
 
 protected:
 	int c;
-	int data[15][15];
 	Gdk::Color col;
 	string t1,t2,d1,d2,p1,p2;
 	Frame MyFrame;
 	Table MyTable,MyGameTable;
-	Entry MyEntry1,MyEntry2;
 	Button MyButton_start,MyButton_new,MyButton_close;
-	Label MyLabel,MyLabel1,MyLabel2,MyLabel3,status_label;
+	Label MyLabel,MyLabel1,MyLabel2,MyLabel3;
+public:
+	Entry MyEntry1,MyEntry2;
+	Label status_label;
 };
 
 
