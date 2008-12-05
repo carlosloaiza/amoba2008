@@ -1,4 +1,4 @@
-togglebutton.d togglebutton.o: ../togglebutton.cpp ../togglebutton.hpp \
+MyButton.d MyButton.o: ../MyButton.cpp ../MyButton.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm.h C:/GTK/include/glibmm-2.4/glibmm.h \
   C:/GTK/lib/glibmm-2.4/include/glibmmconfig.h \
   C:/GTK/include/glibmm-2.4/glibmm/arrayhandle.h \
@@ -609,9 +609,9 @@ togglebutton.d togglebutton.o: ../togglebutton.cpp ../togglebutton.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm/treestore.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/uimanager.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h \
-  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../window.hpp
+  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../Window.hpp ../NumMatrix.h
 
-../togglebutton.hpp:
+../MyButton.hpp:
 
 C:/GTK/include/gtkmm-2.4/gtkmm.h:
 
@@ -1849,4 +1849,6 @@ C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h:
 
 C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h:
 
-../window.hpp:
+../Window.hpp:
+
+../NumMatrix.h:

@@ -4,19 +4,22 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../main.cpp \
-../togglebutton.cpp \
-../window.cpp 
+../MyButton.cpp \
+../StateNode.cpp \
+../Window.cpp \
+../main.cpp 
 
 OBJS += \
-./main.o \
-./togglebutton.o \
-./window.o 
+./MyButton.o \
+./StateNode.o \
+./Window.o \
+./main.o 
 
 CPP_DEPS += \
-./main.d \
-./togglebutton.d \
-./window.d 
+./MyButton.d \
+./StateNode.d \
+./Window.d \
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
