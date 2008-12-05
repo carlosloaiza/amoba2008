@@ -609,8 +609,8 @@ main.d main.o: ../main.cpp C:/GTK/include/gtkmm-2.4/gtkmm.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/treestore.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/uimanager.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h \
-  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../window.hpp \
-  ../togglebutton.hpp
+  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../Window.hpp ../MyButton.hpp \
+  ../NumMatrix.h ../StateNode.h
 
 C:/GTK/include/gtkmm-2.4/gtkmm.h:
 
@@ -1848,6 +1848,10 @@ C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h:
 
 C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h:
 
-../window.hpp:
+../Window.hpp:
 
-../togglebutton.hpp:
+../MyButton.hpp:
+
+../NumMatrix.h:
+
+../StateNode.h:

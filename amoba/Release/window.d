@@ -1,4 +1,4 @@
-window.d window.o: ../window.cpp ../window.hpp \
+Window.d Window.o: ../Window.cpp ../Window.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm.h C:/GTK/include/glibmm-2.4/glibmm.h \
   C:/GTK/lib/glibmm-2.4/include/glibmmconfig.h \
   C:/GTK/include/glibmm-2.4/glibmm/arrayhandle.h \
@@ -609,9 +609,10 @@ window.d window.o: ../window.cpp ../window.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm/treestore.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/uimanager.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h \
-  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../togglebutton.hpp
+  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../MyButton.hpp \
+  ../NumMatrix.h
 
-../window.hpp:
+../Window.hpp:
 
 C:/GTK/include/gtkmm-2.4/gtkmm.h:
 
@@ -1849,4 +1850,6 @@ C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h:
 
 C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h:
 
-../togglebutton.hpp:
+../MyButton.hpp:
+
+../NumMatrix.h:

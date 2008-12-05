@@ -1,31 +1,24 @@
-/*
- * window.hpp
- *
- *  Created on: 2008.10.18.
- *      Author: Karacs Anita
- */
-
 #ifndef WINDOW_HPP_
 #define WINDOW_HPP_
 
 #include "gtkmm.h"
-#include "togglebutton.hpp"
+#include "MyButton.hpp"
+#include "NumMatrix.h"
 
 using namespace Gtk;
 using namespace std;
 
-class MyToggleButtons;
+class MyButton;
 class MyWindow:public Window{
 public:
 	MyWindow();
 
-	int getState(MyToggleButtons* button);
 	void set_color(int r,int g,int b);
 	Gdk::Color get_color();
-	void print_cell_data(MyToggleButtons *button);
 	void startGame();
 	void close();
 	void new_game();
+	void actionPerformed(MyButton* mb);
 
 protected:
 	int c;
