@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
 	MyWindow MainWindow;
 	Main::run(MainWindow);
 
-	for(int i = 0; i<3; i++){
+	for(int i = 0; i<1; i++){
 		StateNode* sn = new StateNode();
 		if(i%1000==0) cout << i << "\n";
 		sn->~StateNode();
