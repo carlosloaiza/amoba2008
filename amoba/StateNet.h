@@ -10,6 +10,7 @@
 
 #include "StateNode.h"
 #include "NumMatrix.h"
+#include "Analyzer.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -28,7 +29,10 @@ private:
 	StateNode* createNode(NumMatrix<int>* state);
 	vector<StateNode*> nodes();
 	vector<string> nodeHashes();
+
 	NumMatrix<int>* actState;
+	StateNode* actNode;
+	Analyzer* analyzer;
 };
 
 #endif /* STATENET_H_ */

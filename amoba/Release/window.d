@@ -1,4 +1,4 @@
-Window.d Window.o: ../Window.cpp ../Window.hpp \
+window.d window.o: ../window.cpp ../Window.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm.h C:/GTK/include/glibmm-2.4/glibmm.h \
   C:/GTK/lib/glibmm-2.4/include/glibmmconfig.h \
   C:/GTK/include/glibmm-2.4/glibmm/arrayhandle.h \
@@ -610,7 +610,7 @@ Window.d Window.o: ../Window.cpp ../Window.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm/uimanager.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../MyButton.hpp \
-  ../NumMatrix.h ../StateNet.h ../StateNode.h
+  ../NumMatrix.h ../StateNet.h ../StateNode.h ../Analyzer.h
 
 ../Window.hpp:
 
@@ -1857,3 +1857,5 @@ C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h:
 ../StateNet.h:
 
 ../StateNode.h:
+
+../Analyzer.h:

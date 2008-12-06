@@ -13,7 +13,7 @@
 using namespace std;
 
 StateNet::StateNet() {
-	// TODO Auto-generated constructor stub
+	analyzer = new Analyzer();
 }
 
 StateNet::~StateNet() {
@@ -22,11 +22,20 @@ StateNet::~StateNet() {
 
 void StateNet::setActState(NumMatrix<int>* state) {
 	actState = state;
+	actNode = createNode(state);
+	analyzer->calculate(actNode, 2);
 }
 
 std::string StateNet::getNextStep() {
 //ide fog jönni egy egyszerû keresés, ami a gyökér gyerekei közül kiválasztja azt, amelyiknek
 //legnagyobb a kontrollértéke - elõtte keresés wflag-re
+
+cout << "getBestMove()" << "\n";
+cout.flush();
+	return actNode->getBestMoves()->at(0);
+cout << "getBestMove() - end" << "\n";
+cout.flush();
+
 	for(int i=0; i<SIZE; i++) {
 		for(int j=0; j<SIZE; j++) {
 			if(actState->getCell(i,j)==0) {
@@ -48,5 +57,8 @@ void StateNet::clear() {
 StateNode* StateNet::createNode(NumMatrix<int>* state) {
 //TODO
 //hashgen -> keresés a hash vektorban esetlegesen visszadni az elemet egyébként új node
+	StateNode* sn = new StateNode();
+	sn->setState(state);
+	return sn;
 }
 

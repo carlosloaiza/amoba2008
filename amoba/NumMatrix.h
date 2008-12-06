@@ -35,11 +35,12 @@ public:
 			std::cout << "\n";
 		}
 		std::cout << "***********END***********\n";
+		std::cout.flush();
 	}
 
 	int getCell(int a, int b) {
 		if (a >= 0 && a < SIZE && b >= 0 && b < SIZE) {
-			return data[a*SIZE+b];
+			return data[a * SIZE + b];
 		} else {
 			return -1;
 		}
@@ -47,23 +48,39 @@ public:
 
 	void setCell(int a, int b, T value) {
 		if (a >= 0 && a < SIZE && b >= 0 && b < SIZE) {
-			data[a*SIZE+b] = value;
+			data[a * SIZE + b] = value;
 		}
 	}
 
-	int getSize() {return SIZE;}
+	int getSize() {
+		return SIZE;
+	}
 
 	std::string getHash() {
-//TODO
-//Hash fuggveny - letrimmeli az elejérõl és a végérõl a 0-kat, a többit pedig sorfolytonosan
-//egymás után írja egy stringbe, de elõtte a tömbindexet, majd egy kötõjelet
-//pl. 13-100010002002
 		std::stringstream ss;
+		std::stringstream temp_ss;
+		temp_ss << "";
 		bool start = false;
-		for(int i=0;i<SIZE;i++) {
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				if (getCell(i, j) != 0) {
+					if (!start) {
+						ss << (i * SIZE + j);
+						ss << "-";
+						ss << getCell(i, j);
+						start = true;
+					} else {
+						ss << temp_ss.str();
+						ss << getCell(i, j);
+						temp_ss.str("");
+					}
+				} else if (start) {
+					temp_ss << getCell(i, j);
+				}
+			}
+
 		}
-//		return ss.str();
-		return "";
+		return ss.str();
 	}
 
 private:
