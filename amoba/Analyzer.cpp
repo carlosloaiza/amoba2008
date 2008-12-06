@@ -41,6 +41,10 @@ void Analyzer::init() {
 }
 
 void Analyzer::considerValue() {
+	if(isTerminated()) {
+//beállítás: wlag, kontrollérték stb.
+		return;
+	}
     haveEmptyCell = false;
     for(int i=0; i<act->getSize(); i++) {
         for(int j=0; j<act->getSize(); j++) {
@@ -228,6 +232,12 @@ int Analyzer::getValue(int i, int j, int a, int b, int player) {
 void Analyzer::setStateNode() {
 	actNode->setMyValue(myValue);
 	actNode->setOpValue(opValue);
+	int term = isTerminated();
+	if(term) {
+		actNode->setWinnerFlag(term);
+		actNode->setMyValue(term==pn?2100000000:-2100000000);
+		return;
+	}
 
     vector<string>* orders = new vector<string>();
     vector<int>* values = new vector<int>();
@@ -252,8 +262,6 @@ void Analyzer::setStateNode() {
     while(!isOrdered) {
         isOrdered = true;
         for(int i=0; i<values->size()-1; i++) {
-cout << "i: " << i << "\n";
-cout.flush();
             if(values->at(i)<values->at(i+1)) {
                 isOrdered = false;
 
@@ -268,6 +276,37 @@ cout.flush();
     }
     for(int i=0; i<orders->size();i++) {cout << orders->at(i) << "\n";}
     actNode->setBestMoves(orders);
-cout << "set vege\n";
-cout.flush();
+}
+
+int Analyzer::isTerminated() {
+	for(int i=0; i<act->getSize(); i++) {
+		for(int j=0; j<act->getSize(); j++) {
+			if(act->getCell(i, j)==1 && act->getCell(i+1, j)==1 && act->getCell(i+2, j)==1 && act->getCell(i+3, j)==1 && act->getCell(i+4, j)==1) {
+				return 1;
+			}
+			if(act->getCell(i, j)==1 && act->getCell(i, j+1)==1 && act->getCell(i, j+2)==1 && act->getCell(i, j+3)==1 && act->getCell(i, j+4)==1) {
+				return 1;
+			}
+			if(act->getCell(i, j)==1 && act->getCell(i+1, j+1)==1 && act->getCell(i+2, j+2)==1 && act->getCell(i+3, j+3)==1 && act->getCell(i+4, j+4)==1) {
+				return 1;
+			}
+			if(act->getCell(i, j)==1 && act->getCell(i+1, j-1)==1 && act->getCell(i+2, j-2)==1 && act->getCell(i+3, j-3)==1 && act->getCell(i+4, j-4)==1) {
+				return 1;
+			}
+
+			if(act->getCell(i, j)==2 && act->getCell(i+1, j)==2 && act->getCell(i+2, j)==2 && act->getCell(i+3, j)==2 && act->getCell(i+4, j)==2) {
+				return 2;
+			}
+			if(act->getCell(i, j)==2 && act->getCell(i, j+1)==2 && act->getCell(i, j+2)==2 && act->getCell(i, j+3)==2 && act->getCell(i, j+4)==2) {
+				return 2;
+			}
+			if(act->getCell(i, j)==2 && act->getCell(i+1, j+1)==2 && act->getCell(i+2, j+2)==2 && act->getCell(i+3, j+3)==2 && act->getCell(i+4, j+4)==2) {
+				return 2;
+			}
+			if(act->getCell(i, j)==2 && act->getCell(i+1, j-1)==2 && act->getCell(i+2, j-2)==2 && act->getCell(i+3, j-3)==2 && act->getCell(i+4, j-4)==2) {
+				return 2;
+			}
+		}
+	}
+	return 0;
 }

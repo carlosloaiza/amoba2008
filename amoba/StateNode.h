@@ -26,16 +26,20 @@ public:
 	void setState(NumMatrix<int>* newState);
 	vector<string>* getBestMoves();
 	void setBestMoves(vector<string>* orders);
+	void setWinnerFlag(int i);
+	void notifyWinnerFlag(int flag);
 
 private:
 	NumMatrix<int>* state;
 	int winnerFlag;
+	int myWinnerChild;
+	int opWinnerChild;
 	long myValue;
 	long opValue;
 	int level;
 	int nextPlayer;
 	vector<StateNode*>* parents;
-	vector<StateNode*>* childs;
+	vector<StateNode*>* children;
 	vector<string>* bestMoves;
 
 };
