@@ -21,18 +21,22 @@ public:
 
 	StateNode* clone();
 	NumMatrix<int>* getState();
+	void setMyValue(int i);
+	void setOpValue(int i);
 	void setState(NumMatrix<int>* newState);
+	vector<string>* getBestMoves();
+	void setBestMoves(vector<string>* orders);
 
 private:
 	NumMatrix<int>* state;
-	NumMatrix<int>* myValues;
-	NumMatrix<int>* opValues;
 	int winnerFlag;
 	long myValue;
 	long opValue;
 	int level;
+	int nextPlayer;
 	vector<StateNode*>* parents;
 	vector<StateNode*>* childs;
+	vector<string>* bestMoves;
 
 };
 

@@ -11,23 +11,22 @@
 
 StateNode::StateNode() {
 	state = new NumMatrix<int>();
-	myValues = new NumMatrix<int>();
-	opValues = new NumMatrix<int>();
 	winnerFlag = 0;
 	myValue = 0;
 	opValue = 0;
 	level = 0;
+	nextPlayer = 0;
 	parents = new vector<StateNode*>();
 	childs = new vector<StateNode*>();
+	bestMoves = new vector<string>();
 }
 
 StateNode::~StateNode() {
 //TODO feladatkezelõben látszik, hogy a memória folyamatosan bõvül - bug
 	delete state;
-	delete myValues;
-	delete opValues;
 	delete parents;
 	delete childs;
+	delete bestMoves;
 }
 
 StateNode* StateNode::clone() {
@@ -42,6 +41,21 @@ NumMatrix<int>* StateNode::getState() {
 	return state;
 }
 
+vector<string>* StateNode::getBestMoves() {
+	return bestMoves;
+}
+
+void StateNode::setBestMoves(vector<string>* orders) {
+	bestMoves = orders;
+}
+
 void StateNode::setState(NumMatrix<int>* newState) {
 	this->state = newState;
+}
+
+void StateNode::setMyValue(int i) {
+	myValue = i;
+}
+void StateNode::setOpValue(int i) {
+	opValue = i;
 }

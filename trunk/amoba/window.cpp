@@ -103,15 +103,20 @@ void MyWindow::actionPerformed(MyButton* button) {
 	button->setStatus(c);
 	button->set_sensitive(false);
 	state->setCell(button->getIIndex(), button->getJIndex(), c);
-	state->print();
-	net->setActState(state);
+//state->print();
+//std::cout.flush() << state->getHash();
+//std::cout.flush() << "\n";
 	if (c == 1) {
 		status_label.set_text(p2);
 	}
 	if (c == 2) {
 		status_label.set_text(p1);
 	}
-	if(c == 1)actionPerformed(net->getNextStep());
+	if(c == 1) {
+		cout.flush();
+		net->setActState(state);
+		actionPerformed(net->getNextStep());
+	}
 }
 
 void MyWindow::actionPerformed(string order) {
@@ -128,6 +133,7 @@ cout << "LEPES: " << i << ", " << j << "\n ";
 
 void MyWindow::new_game() {
 	destroy_();
+	close();
 	MyWindow NewWindow;
 	Main::run(NewWindow);
 }
