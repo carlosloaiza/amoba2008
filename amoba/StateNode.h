@@ -19,10 +19,9 @@ public:
 	StateNode();
 	virtual ~StateNode();
 
+	StateNode* clone();
 	NumMatrix<int>* getState();
 	void setState(NumMatrix<int>* newState);
-
-	StateNode* StateNode::clone();
 
 private:
 	NumMatrix<int>* state;

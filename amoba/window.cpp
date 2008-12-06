@@ -1,6 +1,8 @@
 #include "Window.hpp"
 #include <iostream>
+#include <sstream>
 #include <vector>
+#include "NumMatrix.h"
 
 using namespace Gtk;
 using namespace std;
@@ -14,6 +16,8 @@ MyWindow::MyWindow() :
 			"2. jatekos:"), MyButton_start("START"), MyButton_new("Uj jatek"),
 			MyButton_close("Bezar") {
 	c = 2;
+	state = new NumMatrix<int>();
+	net = new StateNet();
 	set_title("Amoba - The Game Ver.1.0");
 	set_size_request(775, 480);
 	set_border_width(30);
@@ -74,11 +78,12 @@ void MyWindow::startGame() {
 
 	for (int i = 0; i < 15; i++) {
 		for (int j = 0; j < 15; j++) {
-			MyButton *MyTB = new MyButton;
+			MyButton* MyTB = new MyButton();
+			buttons.push_back(MyTB);
 			MyTB->signal_toggled().connect(sigc::mem_fun(MyTB,
 					&MyButton::my_click));
 			MyTB->setParent(this);
-			MyTB->setIndex(i, j);
+			MyTB->setIndex(j, i);
 			MyGameTable.attach(*MyTB, i, i + 1, j, j + 1);
 		}
 	}
@@ -96,12 +101,29 @@ void MyWindow::set_color(int r, int g, int b) {
 void MyWindow::actionPerformed(MyButton* button) {
 	c = c%2==0?1:2;
 	button->setStatus(c);
+	button->set_sensitive(false);
+	state->setCell(button->getIIndex(), button->getJIndex(), c);
+	state->print();
+	net->setActState(state);
 	if (c == 1) {
 		status_label.set_text(p2);
 	}
 	if (c == 2) {
 		status_label.set_text(p1);
 	}
+	if(c == 1)actionPerformed(net->getNextStep());
+}
+
+void MyWindow::actionPerformed(string order) {
+    std::stringstream ss;
+    char temp;
+    ss<<order;
+    int i, j;
+    ss>>i;
+    ss>>temp;
+    ss>>j;
+    actionPerformed(buttons.at(i+j*15));
+cout << "LEPES: " << i << ", " << j << "\n ";
 }
 
 void MyWindow::new_game() {

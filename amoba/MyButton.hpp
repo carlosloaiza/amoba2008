@@ -23,10 +23,12 @@ public:
 	void my_click();
 	void setStatus(int _s);
 	void setIndex(int _i,int _j);
+	int getIIndex() {return iIndex;}
+	int getJIndex() {return jIndex;}
 	void setParent(MyWindow* parent);
 private:
 	MyWindow *ch;
-	int i,j, s;
+	int iIndex,jIndex, s;
 };
 
 #endif /* TOGGLEBUTTON_HPP_ */
