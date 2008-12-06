@@ -7,6 +7,7 @@
 
 #include <gtkmm.h>
 #include <iostream>
+#include <vector>
 #include "Window.hpp"
 #include "MyButton.hpp"
 
@@ -19,9 +20,9 @@ using namespace std;
 using namespace Gtk;
 
 int main(int argc, char *argv[]){
-//	Main kit(argc,argv);
-//	MyWindow MainWindow;
-//	Main::run(MainWindow);
+	Main kit(argc,argv);
+	MyWindow MainWindow;
+	Main::run(MainWindow);
 
 	for(int i = 0; i<3; i++){
 		StateNode* sn = new StateNode();

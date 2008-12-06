@@ -8,9 +8,10 @@
 #ifndef NUMMATRIX_H_
 #define NUMMATRIX_H_
 
-#define SIZE 20
+#define SIZE 15
 
 #include <iostream>
+#include <sstream>
 #include <string>
 
 template<class T> class NumMatrix {
@@ -49,6 +50,8 @@ public:
 			data[a*SIZE+b] = value;
 		}
 	}
+
+	int getSize() {return SIZE;}
 
 	std::string getHash() {
 //TODO

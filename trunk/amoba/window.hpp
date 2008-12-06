@@ -4,6 +4,8 @@
 #include "gtkmm.h"
 #include "MyButton.hpp"
 #include "NumMatrix.h"
+#include "StateNet.h"
+#include <vector>
 
 using namespace Gtk;
 using namespace std;
@@ -19,6 +21,7 @@ public:
 	void close();
 	void new_game();
 	void actionPerformed(MyButton* mb);
+	void actionPerformed(string s);
 
 protected:
 	int c;
@@ -27,7 +30,11 @@ protected:
 	Frame MyFrame;
 	Table MyTable,MyGameTable;
 	Button MyButton_start,MyButton_new,MyButton_close;
+	vector<MyButton*> buttons;
 	Label MyLabel,MyLabel1,MyLabel2,MyLabel3;
+
+	NumMatrix<int>* state;
+	StateNet* net;
 public:
 	Entry MyEntry1,MyEntry2;
 	Label status_label;

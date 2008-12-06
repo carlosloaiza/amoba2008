@@ -8,8 +8,8 @@ MyButton::MyButton() {
 }
 
 void MyButton::setIndex(int _i, int _j) {
-	i = _i;
-	j = _j;
+	iIndex = _i;
+	jIndex = _j;
 }
 
 void MyButton::setParent(MyWindow* parent) {
@@ -18,7 +18,6 @@ void MyButton::setParent(MyWindow* parent) {
 
 void MyButton::my_click() {
 	ch->actionPerformed(this);
-	set_sensitive(false);
 }
 
 void MyButton::setStatus(int _s) {

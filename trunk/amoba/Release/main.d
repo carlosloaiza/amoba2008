@@ -610,7 +610,7 @@ main.d main.o: ../main.cpp C:/GTK/include/gtkmm-2.4/gtkmm.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/uimanager.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../Window.hpp ../MyButton.hpp \
-  ../NumMatrix.h ../StateNode.h
+  ../NumMatrix.h ../StateNet.h ../StateNode.h
 
 C:/GTK/include/gtkmm-2.4/gtkmm.h:
 
@@ -1853,5 +1853,7 @@ C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h:
 ../MyButton.hpp:
 
 ../NumMatrix.h:
+
+../StateNet.h:
 
 ../StateNode.h:

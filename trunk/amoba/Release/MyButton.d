@@ -609,7 +609,8 @@ MyButton.d MyButton.o: ../MyButton.cpp ../MyButton.hpp \
   C:/GTK/include/gtkmm-2.4/gtkmm/treestore.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/uimanager.h \
   C:/GTK/include/gtkmm-2.4/gtkmm/actiongroup.h \
-  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../Window.hpp ../NumMatrix.h
+  C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h ../Window.hpp ../NumMatrix.h \
+  ../StateNet.h ../StateNode.h
 
 ../MyButton.hpp:
 
@@ -1852,3 +1853,7 @@ C:/GTK/include/gtkmm-2.4/gtkmm/viewport.h:
 ../Window.hpp:
 
 ../NumMatrix.h:
+
+../StateNet.h:
+
+../StateNode.h:
