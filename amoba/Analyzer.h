@@ -32,7 +32,7 @@ public:
 	Analyzer();
 	virtual ~Analyzer();
 
-	void calculate(StateNode* stateNode, int p);
+	void calculate(StateNode* stateNode);
 	int isTerminated(NumMatrix<int>* state);
 
 private:

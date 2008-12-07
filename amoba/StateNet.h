@@ -25,7 +25,7 @@ public:
 	void setActState(NumMatrix<int>* state);
 	std::string getNextStep();
 	Analyzer* getAnalyzer();
-	StateNode* createNode(NumMatrix<int>* state);
+	StateNode* createNode(NumMatrix<int>* state, int player);
 	void expand();
 
 private:

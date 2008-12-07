@@ -15,7 +15,7 @@ MyWindow::MyWindow() :
 				"Jatekosok nevei:"), MyLabel1("1. jatekos:"), MyLabel2(
 			"2. jatekos:"), MyButton_start("START"), MyButton_new("Uj jatek"),
 			MyButton_close("Bezar") {
-	c = 2;
+	c = 1;
 	state = new NumMatrix<int>();
 	net = new StateNet();
 	set_title("Amoba - The Game Ver.1.0");
@@ -90,6 +90,9 @@ void MyWindow::startGame() {
 	MyTable.attach(MyGameTable, 5, 10, 0, 10);
 
 	show_all_children();
+
+//	c = c%2==0?1:2;
+	actionPerformed(buttons.at(112));
 }
 
 void MyWindow::set_color(int r, int g, int b) {
