@@ -17,10 +17,10 @@ Analyzer::Analyzer() {
 Analyzer::~Analyzer() {
 }
 
-void Analyzer::calculate(StateNode* state, int p) {
+void Analyzer::calculate(StateNode* state) {
 	actNode = state;
 	act = state->getState();
-	pn = p;
+	pn = actNode->getNextPlayer();
 	init();
 	considerValue();
 	setStateNode();

@@ -29,6 +29,7 @@ public:
 	vector<StateNode*>* getChildren();
 	void addChild(StateNode* child);
 	void addParent(StateNode* parent);
+	int getWinnerFlag();
 	void setWinnerFlag(int i);
 	void notifyWinnerFlag(int flag);
 	void removeParent(StateNode* parent);
@@ -39,9 +40,10 @@ public:
 	void setNextPlayer(int player);
 	long getExpandValue();
 	void setExpandValue(long eValue);
+	long getChildrenValue();
+	void printInfo();
 
 private:
-	long getChildrenValue();
 	int getChildrenNum();
 	NumMatrix<int>* state;
 	int winnerFlag;

@@ -26,15 +26,13 @@ StateNode::StateNode() {
 }
 
 StateNode::~StateNode() {
-//TODO feladatkezelõben látszik, hogy a memória folyamatosan bõvül - bug
+	for(int i = 0; children->size();i++) {
+		children->at(i)->removeParent(this);
+	}
 	delete state;
 	delete parents;
 	delete children;
 	delete bestMoves;
-
-	for(int i = 0; children->size();i++) {
-		children->at(i)->removeParent(this);
-	}
 }
 
 StateNode* StateNode::clone() {
@@ -43,6 +41,10 @@ StateNode* StateNode::clone() {
 	NumMatrix<int> nState = *(this->state);
 	cloned->setState(&nState);
 	return cloned;
+}
+
+int StateNode::getWinnerFlag() {
+	return winnerFlag;
 }
 
 void StateNode::setWinnerFlag(int i) {
@@ -72,18 +74,11 @@ void StateNode::removeParent(StateNode* parent) {
 }
 
 long StateNode::getRecursiveValue() {
-cout << "ch: \n"; cout.flush();
-cout << getChildrenValue();
-cout << "ch-end: \n"; cout.flush();
-cout << "nu: \n"; cout.flush();
-cout << getChildrenNum();
-cout << "nu-end: \n"; cout.flush();
 	return getChildrenValue()/getChildrenNum();
 }
 
 long StateNode::getChildrenValue() {
 	long sum = myValue-opValue;
-cout << "hash: " <<this->getState()->getHash() << "\n"; cout.flush();
 	for(int i=0;i<children->size();i++) {
 		sum += children->at(i)->getChildrenValue();
 	}
@@ -99,6 +94,9 @@ int StateNode::getChildrenNum() {
 }
 
 void StateNode::addChild(StateNode* child) {
+	for(int i=0; i<children->size();i++) {
+		if(children->at(i) == child) {return;}
+	}
 	children->push_back(child);
 	child->setLevel(this->getLevel()+1);
 	child->addParent(this);
@@ -106,6 +104,9 @@ void StateNode::addChild(StateNode* child) {
 }
 
 void StateNode::addParent(StateNode* parent) {
+	for(int i=0; i<parents->size();i++) {
+		if(parents->at(i) == parent) {return;}
+	}
 	parents->push_back(parent);
 }
 
@@ -164,4 +165,14 @@ vector<StateNode*>* StateNode::getChildren() {
 	return children;
 }
 
-
+void StateNode::printInfo() {
+  cout<<" Node\t: "<<getState()->getHash()<< ((getState()->getHash().length()<8)?"\t\t\t":"") <<
+		"; expandValue\t: "<<getExpandValue()<<
+		"; recValue\t: "<<getRecursiveValue()<<
+		"; childValue\t: "<<getChildrenValue()<<
+		"; childNum\t: "<<getChildrenNum()<<
+		"; level\t:"<<getLevel()<<
+		"; player\t: "<<getNextPlayer()<<
+		";\n";
+  cout.flush();
+}
