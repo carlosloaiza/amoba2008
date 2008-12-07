@@ -5,7 +5,9 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Analyzer.cpp \
+../List.cpp \
 ../MyButton.cpp \
+../Node.cpp \
 ../StateNet.cpp \
 ../StateNode.cpp \
 ../main.cpp \
@@ -13,7 +15,9 @@ CPP_SRCS += \
 
 OBJS += \
 ./Analyzer.o \
+./List.o \
 ./MyButton.o \
+./Node.o \
 ./StateNet.o \
 ./StateNode.o \
 ./main.o \
@@ -21,7 +25,9 @@ OBJS += \
 
 CPP_DEPS += \
 ./Analyzer.d \
+./List.d \
 ./MyButton.d \
+./Node.d \
 ./StateNet.d \
 ./StateNode.d \
 ./main.d \

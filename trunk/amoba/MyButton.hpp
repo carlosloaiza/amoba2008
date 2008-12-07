@@ -1,8 +1,8 @@
 /*
  * togglebutton.hpp
  *
- *  Created on: 2008.10.29.
- *      Author: Karacs Anita
+ *  Created on: 2008.12.05.
+ *      Author: Bacsó Gergely
  */
 
 #ifndef TOGGLEBUTTON_HPP_

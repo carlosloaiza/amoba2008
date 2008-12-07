@@ -14,15 +14,20 @@
 #include <sstream>
 #include <string>
 
+using namespace std;
+
 template<class T> class NumMatrix {
+
 public:
+
 	NumMatrix<T> () {
 		data = new T[SIZE * SIZE]();
 		for (int i = 0; i < SIZE * SIZE; i++) {
 			data[i] = 0;
 		}
 	}
-	virtual ~NumMatrix<T> () {
+
+	~NumMatrix<T> () {
 		delete[] data;
 	}
 
@@ -81,6 +86,29 @@ public:
 
 		}
 		return ss.str();
+	}
+
+	bool isReachable(NumMatrix<int>* child) {
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				if(this->getCell(i, j)) {
+					if(!(this->getCell(i, j) == child->getCell(i, j))) {
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	NumMatrix<T>* clone() {
+		NumMatrix<T>* n = new NumMatrix<T>();
+		for(int i=0; i<SIZE;i++) {
+			for(int j=0; j<SIZE;j++) {
+				n->setCell(i, j, this->getCell(i, j));
+			}
+		}
+		return n;
 	}
 
 private:

@@ -33,6 +33,7 @@ public:
 	virtual ~Analyzer();
 
 	void calculate(StateNode* stateNode, int p);
+	int isTerminated(NumMatrix<int>* state);
 
 private:
 
@@ -58,6 +59,7 @@ private:
 	int ValueLEFT(int i, int j, int player);
 	int ValueLEFTUP(int i, int j, int player);
 	int getValue(int i, int j, int a, int b, int player);
+
 	int isTerminated();
 
 };

@@ -5,6 +5,7 @@
 #include "MyButton.hpp"
 #include "NumMatrix.h"
 #include "StateNet.h"
+#include "Analyzer.h"
 #include <vector>
 
 using namespace Gtk;
