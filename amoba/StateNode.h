@@ -26,18 +26,33 @@ public:
 	void setState(NumMatrix<int>* newState);
 	vector<string>* getBestMoves();
 	void setBestMoves(vector<string>* orders);
+	vector<StateNode*>* getChildren();
+	void addChild(StateNode* child);
+	void addParent(StateNode* parent);
 	void setWinnerFlag(int i);
 	void notifyWinnerFlag(int flag);
+	void removeParent(StateNode* parent);
+	long getRecursiveValue();
+	int getLevel();
+	void setLevel(int lev);
+	int getNextPlayer();
+	void setNextPlayer(int player);
+	long getExpandValue();
+	void setExpandValue(long eValue);
 
 private:
+	long getChildrenValue();
+	int getChildrenNum();
 	NumMatrix<int>* state;
 	int winnerFlag;
 	int myWinnerChild;
 	int opWinnerChild;
 	long myValue;
 	long opValue;
+	long expandValue;
 	int level;
 	int nextPlayer;
+	long recursiveValue;
 	vector<StateNode*>* parents;
 	vector<StateNode*>* children;
 	vector<string>* bestMoves;

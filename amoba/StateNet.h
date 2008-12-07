@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
 
 using namespace std;
 
@@ -23,16 +24,21 @@ public:
 	virtual ~StateNet();
 	void setActState(NumMatrix<int>* state);
 	std::string getNextStep();
+	Analyzer* getAnalyzer();
+	StateNode* createNode(NumMatrix<int>* state);
+	void expand();
 
 private:
-	void clear();
-	StateNode* createNode(NumMatrix<int>* state);
-	vector<StateNode*> nodes();
-	vector<string> nodeHashes();
+	void clean();
+	NumMatrix<int>* applyOrder(NumMatrix<int>* state, string order, int player);
+	void createChild(StateNode* sn);
+	vector<StateNode*> nodes;
+	vector<string> nodeHashes;
 
 	NumMatrix<int>* actState;
 	StateNode* actNode;
 	Analyzer* analyzer;
+
 };
 
 #endif /* STATENET_H_ */

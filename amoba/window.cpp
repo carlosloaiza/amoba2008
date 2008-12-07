@@ -103,9 +103,13 @@ void MyWindow::actionPerformed(MyButton* button) {
 	button->setStatus(c);
 	button->set_sensitive(false);
 	state->setCell(button->getIIndex(), button->getJIndex(), c);
-//state->print();
-//std::cout.flush() << state->getHash();
-//std::cout.flush() << "\n";
+
+	if(net->getAnalyzer()->isTerminated(state)) {
+		status_label.set_text("Jatek vege");
+		for(int i=0;i<buttons.size();i++) {buttons.at(i)->set_sensitive(false);}
+		return;
+	}
+
 	if (c == 1) {
 		status_label.set_text(p2);
 	}
@@ -120,6 +124,9 @@ void MyWindow::actionPerformed(MyButton* button) {
 }
 
 void MyWindow::actionPerformed(string order) {
+	if(order == "end") {
+		status_label.set_text("Jatek vege");
+	}
     std::stringstream ss;
     char temp;
     ss<<order;

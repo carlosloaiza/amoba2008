@@ -1,52 +1,5 @@
 Ahhoj!
 
-Ez a jelenlegi állapot. Még egy nagyobb osztály hiányzik belõle, de az most nem életbevágó. Ha szeretnél valamit csinálni, akkor pár apróság:
+Kb. itt megállok mára. Kifelé ugyanúgy mûködik, mint eddig, de belül már kész van a kód 90%-a. Nézegetlheted, ha van kedved, de egyelõre nem kellene szerintem semmit csinálni vele. Ha esetleg mégis, akkor holnap szerintem szólok.
 
-NumMatrix.h-ban van egy hash függvény. Leírtam, mit kellene csinálnia, de nem kódoltam le. Kb. 10 perc max szerintem.
-
-Necesebb: StateNode destruktora - C-seknek cleanup :) -. A main-t felülírod, hogy csak ész nélkül gyártson node-okat, akkor a memóriakezelõben figyelheted, ahogy több száz megát összeeszik a program. Pedig a denstruktor meghívódik. Ez google-ös lesz szerintem.
-
-Többszálúsítás. Alul mellékelek példakódot. Azt kellene tudnunk, hogy 1 szál folyamatosan fut - néha felfüggesztheti magát, ha úgy érzi - és mondjuk iterál egy számot. A másik pedig néha eszébe jut és kiírja azt a számot, ahol épp jár. A felfüggesztést jó lenne megtalálni, + a priority-t levenni valahogy, mert így attól tartok elkezd 100%-os procikihasználtsággal hálót bõvíteni ész nélkül.
-
-//*******EZ ÍGY EGYBEN FUT NÁLAM*********
-#include <windows.h>
-#include <iostream>
-
-long WINAPI ThreadNulla(long lParam);
-
-int stop_counter = 0;
-
-int main(void) {
-	HANDLE hThread[2];
-	DWORD dwID[2];
-	DWORD dwRetVal = 0;
-
-	hThread[1] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE) ThreadNulla,
-			NULL, 0, &dwID[0]);
-
-	dwRetVal = WaitForMultipleObjects(3, hThread, TRUE, INFINITE);
-
-	int e = 40;
-	while(true) {
-		std::cout << "MAIN " << e++ << "\n";
-		stop_counter = 2*e;
-		Sleep(500);
-	}
-
-//	MessageBox(NULL, "all threads have completed.", "Messagebox", NULL);
-
-	CloseHandle(hThread[0]);
-	return 0;
-}
-
-long WINAPI ThreadNulla(long lParam) {
-	int d = 0;
-	while(true) {
-		std::cout << "MASIK SZAL " << d++ << "\n";
-		Sleep(500);
-		if(stop_counter>=100) {break;}
-	}
-	return 0;
-}
-
-//*****************************************
+Viszlány
