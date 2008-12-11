@@ -9,15 +9,15 @@
 #define ANALYZER_H_
 
 #define VALUE1  2000000000
-#define VALUE2  976744
-#define VALUE3  716345
-#define VALUE4  491376
-#define VALUE5  315606
-#define VALUE6  187453
-#define VALUE7  108550
-#define VALUE8  67215
-#define VALUE9  39761
-#define VALUE10 25433
+#define VALUE2  97674416
+#define VALUE3  71634508
+#define VALUE4  49137654
+#define VALUE5  31560629
+#define VALUE6  18745355
+#define VALUE7  10855060
+#define VALUE8  6721560
+#define VALUE9  3976113
+#define VALUE10 2543300
 
 #include <vector>
 #include <iostream>
