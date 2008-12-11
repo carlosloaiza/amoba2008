@@ -32,26 +32,41 @@ void StateNet::setActState(NumMatrix<int>* state) {
 
 std::string StateNet::getNextStep() {
 	int max=0;
+	bool win = false;
+	int winValue = 10000;
+	int winIndex = 0;
 	for(int i = 0; i<actNode->getChildren()->size();i++) {
-		if(actNode->getChildren()->at(i)->getWinnerFlag()==2) {
-			return actNode->getBestMoves()->at(i);
-		}
 		if(actNode->getChildren()->at(i)->getRecursiveValue()>actNode->getChildren()->at(max)->getRecursiveValue()) {
 			max = i;
 		}
+		if(actNode->getChildren()->at(i)->getWinnerFlag()<winValue) {
+			winIndex = i;
+			winValue = actNode->getChildren()->at(i)->getWinnerFlag();
+		}
 	}
-	return actNode->getBestMoves()->at(max);
+	if(winValue!=10000) {
+		cout << "\nCICCC\n"; cout.flush();
+		return actNode->getBestMoves()->at(winIndex);
+	} else {
+		cout << "\nNEMWINNER\n"; cout.flush();
+		return actNode->getBestMoves()->at(max);
+	}
 }
 
 void StateNet::clean() {
-cout << "*******CLEAN START*******"<<nodes.size()<<"\n";
+cout << "*******CLEAN START*******"<<nodes.size()<<"\n";cout.flush();
+	StateNode* delNode = 0;
 	for(int i=0; i<nodes.size(); i++) {
 		if(!actState->isReachable(nodes.at(i)->getState())) {
+			if(nodes.at(i)==0) {cout << "###4 \n";cout.flush();}
+			delNode = nodes.at(i);
 			nodes.erase(nodes.begin()+i);
 			nodeHashes.erase(nodeHashes.begin()+i);
+
+			//if(delNode){delete delNode;}
 		}
 	}
-cout << "********CLEAN END********"<<nodes.size()<<"\n";
+cout << "********CLEAN END********"<<nodes.size()<<"\n";cout.flush();
 }
 StateNode* StateNet::createNode(NumMatrix<int>* state, int player) {
 	string hash = state->getHash();
@@ -98,6 +113,10 @@ void StateNet::expand() {
 		}
 		childNum = nodes.size();
 		createChild(nodes.at(max));
+//cout <<"\n Kiterjesztettem ezt a gyereket: " <<"\n\t"<<nodes.at(max)->getState()->getHash();
+//cout <<"\n\t neki már ennyi gyereke van: " <<nodes.at(max)->getChildren()->size();
+//cout <<"\n\t és ennyi lehetséges lépése: " <<nodes.at(max)->getBestMoves()->size();
+//cout <<"\n\t szintje: " <<nodes.at(max)->getLevel();
 		if(childNum == nodes.size()) {breakLoop++;} else {breakLoop = 0;}
 		if(breakLoop>10) {break;}
 	}
@@ -113,7 +132,7 @@ void StateNet::createChild(StateNode* sn) {
 	state = applyOrder(state, order, sn->getNextPlayer());
 	StateNode* node = createNode(state, sn->getNextPlayer()==2?1:2);
 	sn->addChild(node);
-	analyzer->calculate(node);
+//	analyzer->calculate(node);
 }
 
 NumMatrix<int>* StateNet::applyOrder(NumMatrix<int>* state, string order, int player) {

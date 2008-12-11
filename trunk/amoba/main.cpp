@@ -25,30 +25,20 @@ using namespace std;
 using namespace Gtk;
 
 int main(int argc, char *argv[]){
+
 	Main kit(argc,argv);
 	MyWindow MainWindow;
-	Main::run(MainWindow);
+ 	Main::run(MainWindow);
 
 	StateNet* sn = new StateNet();
 
 	NumMatrix<int>* n3 = new NumMatrix<int>();
-	n3->setCell(1,1,1);
-	n3->setCell(1,2,1);
-	n3->setCell(1,3,1);
+	n3->setCell(6,7,1);
+	n3->setCell(7,7,1);
+	n3->setCell(8,7,1);
+	n3->setCell(9,7,2);
 	sn->setActState(n3);
-
-	NumMatrix<int>* n2 = new NumMatrix<int>();
-	n2->setCell(1,1,1);
-	n2->setCell(1,2,1);
-	sn->setActState(n2);
-
-	NumMatrix<int>* n1 = new NumMatrix<int>();
-	n1->setCell(1,1,2);
-	sn->setActState(n1);
-
-	NumMatrix<int>* n4 = new NumMatrix<int>();
-	n4->setCell(4,4,1);
-	sn->setActState(n4);
+	cout << "\n" <<"nextstep: "<< sn->getNextStep() << "\n";
 
 	return 0;
 }

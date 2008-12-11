@@ -49,6 +49,8 @@ int StateNode::getWinnerFlag() {
 
 void StateNode::setWinnerFlag(int i) {
 	winnerFlag = i;
+
+cout << "\nErtesulnenek a szulok a winnerflagrol, ennyien: "<<parents->size()<<"\n";cout.flush();
 	for(int i=0;i < parents->size();i++) {
 		if(parents->at(i)) {
 			parents->at(i)->notifyWinnerFlag(winnerFlag);
@@ -57,11 +59,15 @@ void StateNode::setWinnerFlag(int i) {
 }
 
 void StateNode::notifyWinnerFlag(int flag) {
-	if(flag = nextPlayer) {myWinnerChild++;} else {opWinnerChild++;}
-	if(flag == nextPlayer) {
-		setWinnerFlag(nextPlayer);
+cout << "notify\n";
+	int modFlag = flag%2==0?2:1;
+	if(modFlag == nextPlayer) {myWinnerChild++;} else {opWinnerChild++;}
+	if(modFlag == nextPlayer) {
+cout << "logikusan beállítottam ezt: " << modFlag << "\n";cout.flush();
+		setWinnerFlag(flag+2);
 	} else if(opWinnerChild == children->size() || myWinnerChild == children->size()) {
-		setWinnerFlag(flag);
+cout << "logikusan beállítottam ezt: " << modFlag << "\n";cout.flush();
+		setWinnerFlag(flag+2);
 	}
 }
 
@@ -94,6 +100,7 @@ int StateNode::getChildrenNum() {
 }
 
 void StateNode::addChild(StateNode* child) {
+
 	for(int i=0; i<children->size();i++) {
 		if(children->at(i) == child) {return;}
 	}
@@ -108,6 +115,9 @@ void StateNode::addParent(StateNode* parent) {
 		if(parents->at(i) == parent) {return;}
 	}
 	parents->push_back(parent);
+	if(winnerFlag) {
+		parent->notifyWinnerFlag(winnerFlag);
+	}
 }
 
 NumMatrix<int>* StateNode::getState() {
@@ -154,7 +164,8 @@ long StateNode::getExpandValue() {
 	if(winnerFlag!=0 || getBestMoves()->size()==children->size()) {
 		return -2100000000;
 	}
-	return getRecursiveValue()/(getLevel()+children->size());
+	return -level;
+//	return getRecursiveValue()*(15-getLevel())*(15-getLevel())*(getBestMoves()->size()/getChildrenNum());
 }
 
 void StateNode::setExpandValue(long eValue) {

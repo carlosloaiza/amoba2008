@@ -274,6 +274,7 @@ void Analyzer::setStateNode() {
         }
     }
 //    for(int i=0; i<orders->size();i++) {cout << orders->at(i) << "\n";}
+    orders->erase(orders->begin()+6, orders->end());
     actNode->setBestMoves(orders);
 }
 
