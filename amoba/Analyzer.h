@@ -1,7 +1,7 @@
 /*
  * Analyzer.h
  *
- *  Created on: 2008.12.06.
+ *  Created on: 2008.12.16.
  *      Author: bacsog
  */
 

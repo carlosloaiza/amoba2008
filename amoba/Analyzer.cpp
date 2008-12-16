@@ -1,7 +1,7 @@
 /*
  * Analyzer.cpp
  *
- *  Created on: 2008.12.06.
+ *  Created on: 2008.12.14.
  *      Author: bacsog
  */
 
