@@ -1,7 +1,7 @@
 /*
  * StateNode.h
  *
- *  Created on: 2008.12.05.
+ *  Created on: 2008.12.15.
  *      Author: bacsog
  */
 
