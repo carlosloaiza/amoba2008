@@ -1,0 +1,1 @@
+It's a simple gomoku game with A.I. based on a multi-tree and genetical algorithms, + GTK GUI.
